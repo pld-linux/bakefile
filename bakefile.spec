@@ -16,7 +16,6 @@ BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
 Requires:	python-libxml2
 Requires:	empy >= 3.1
-Requires:	python-optik >= 1.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
