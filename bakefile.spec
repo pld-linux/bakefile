@@ -4,12 +4,12 @@
 Summary:	Native makefiles generator
 Name:		bakefile
 Version:	0.1.1
-%define		snap 20030930
+%define		snap 20031001
 Release:	0.%{snap}.1
 License:	GPL v2+
 Group:		Applications/Text
 Source0:	http://bakefile.sourceforge.net/snapshot/bakefile-%{version}.%{snap}.tar.gz
-# Source0-md5:	a9ae24fce1ec633a675759943b0f35c4
+# Source0-md5:	1a98d7da01d6a65f5daa888c88f3c400
 Patch0:		%{name}-empy.patch
 URL:		http://bakefile.sourceforge.net/
 BuildRequires:	rpm-pythonprov
