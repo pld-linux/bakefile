@@ -1,13 +1,12 @@
 Summary:	Native makefiles generator
 Summary(pl):	Generator natywnych plików typu Makefile
 Name:		bakefile
-Version:	0.1.4
-Release:	3
+Version:	0.1.5
+Release:	1
 License:	GPL v2+
 Group:		Applications/Text
 Source0:	http://dl.sourceforge.net/bakefile/bakefile-%{version}.tar.gz
-# Source0-md5:	af29dbba0c3f9038f8dc358e94dac9ed
-Source1:	%{name}-%{version}.m4
+# Source0-md5:	75672a679c4b1f72b48bbddc6f3ffffb
 Patch0:		%{name}-empy.patch
 URL:		http://bakefile.sourceforge.net/
 BuildRequires:	autoconf
@@ -49,8 +48,7 @@ install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_bindir}}
 	DESTDIR=$RPM_BUILD_ROOT \
 	install
 
-# please remove if bakefile version >= 0.1.5
-install %{SOURCE1} $RPM_BUILD_ROOT%{_aclocaldir}/bakefile.m4
+touch $RPM_BUILD_ROOT%{_aclocaldir}/autoconf_inc.m4
 
 # use system available modules
 rm -rf $RPM_BUILD_ROOT%{_libdir}/%{name}/{empy,optik}
@@ -66,6 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/*.py[oc]
+%attr(755,root,root) %{_libdir}/%{name}/*.so
 %attr(755,root,root) %{_libdir}/%{name}/bakefile.py
 %attr(755,root,root) %{_libdir}/%{name}/bakefile_gen.py
 %{_mandir}/man1/bakefile.1*
