@@ -4,12 +4,12 @@
 Summary:	Native makefiles generator
 Name:		bakefile
 Version:	0.1.1
-%define		snap 20030921
+%define		snap 20030922
 Release:	0.%{snap}.1
 License:	GPL v2+
 Group:		Applications/Text
 Source0:	http://bakefile.sourceforge.net/snapshot/bakefile-%{version}.%{snap}.tar.gz
-# Source0-md5:	6c8d21e2d73440b6da9be6d75b568f9e
+# Source0-md5:	52d8894603886844df68004e3bb8fd6c
 URL:		http://bakefile.sourceforge.net/
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
@@ -36,6 +36,9 @@ install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_bindir}}
 %{__make} \
 	DESTDIR=$RPM_BUILD_ROOT \
 	install
+
+# use system available modules
+rm -rf $RPM_BUILD_ROOT%{_datadir}/%{name}/src/{empy,optik}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
