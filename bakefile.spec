@@ -5,11 +5,12 @@ Summary:	Native makefiles generator
 Name:		bakefile
 Version:	0.1.1
 %define		snap 20030922
-Release:	0.%{snap}.1
+Release:	0.%{snap}.2
 License:	GPL v2+
 Group:		Applications/Text
 Source0:	http://bakefile.sourceforge.net/snapshot/bakefile-%{version}.%{snap}.tar.gz
 # Source0-md5:	52d8894603886844df68004e3bb8fd6c
+Patch0:		%{name}-empy.patch
 URL:		http://bakefile.sourceforge.net/
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
@@ -25,6 +26,7 @@ makefile (autoconf's Makefile.in, Visual C++ project, bcc makefile etc.).
 
 %prep
 %setup -q -n %{name}-%{version}.%{snap}
+%patch0 -p1
 
 %build
 %configure
