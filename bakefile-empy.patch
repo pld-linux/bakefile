@@ -1,0 +1,15 @@
+--- bakefile-0.1.1.20030921/src/writer.py.wiget	2003-09-22 10:52:08.000000000 +0200
++++ bakefile-0.1.1.20030921/src/writer.py	2003-09-22 10:53:18.000000000 +0200
+@@ -174,10 +174,10 @@
+     return (rulesdir, template)
+ 
+ def invoke_em(writer, file, method):
+-    import empy.em
++    import em
+     rulesdir, template = __findWriter(writer)
+     filename = tempfile.mktemp('bakefile')   
+-    empy.em.invoke(['-I','mk',
++    em.invoke(['-I','mk',
+                     '-I','writer',
+                     '-I','utils',
+                     '-I','os,os.path',
