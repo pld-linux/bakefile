@@ -2,13 +2,12 @@
 Summary:	Native makefiles generator
 Summary(pl):	Generator natywnych plików typu Makefile
 Name:		bakefile
-Version:	0.1.1
-%define		snap 20031028
-Release:	0.%{snap}.1
+Version:	0.1.4
+Release:	1
 License:	GPL v2+
 Group:		Applications/Text
-Source0:	http://bakefile.sourceforge.net/snapshot/bakefile-%{version}.%{snap}.tar.gz
-# Source0-md5:	a504c189647bb1fcd14a23766b70b5f2
+Source0:	http://dl.sourceforge.net/bakefile/bakefile-%{version}.tar.gz
+# Source0-md5:	af29dbba0c3f9038f8dc358e94dac9ed
 Patch0:		%{name}-empy.patch
 URL:		http://bakefile.sourceforge.net/
 BuildRequires:	autoconf
@@ -33,7 +32,7 @@ kompilatora opis zadañ budowania  i tworzy natywny plik (Makefile.in
 dla autoconfa, projekt dla Visual C++, makefile dla bcc itd.).
 
 %prep
-%setup -q -n %{name}-%{version}.%{snap}
+%setup -q 
 %patch0 -p1
 
 %build
@@ -51,7 +50,7 @@ install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_bindir}}
 	install
 
 # use system available modules
-rm -rf $RPM_BUILD_ROOT%{_datadir}/%{name}/src/{empy,optik}
+rm -rf $RPM_BUILD_ROOT%{_libdir}/%{name}/{empy,optik}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -61,11 +60,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc README THANKS doc/html
 %attr(755,root,root) %{_bindir}/*
 %{_aclocaldir}/*.m4
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/output
-%{_datadir}/%{name}/rules
-%dir %{_datadir}/%{name}/src
-%{_datadir}/%{name}/src/*.py[oc]
-%attr(755,root,root) %{_datadir}/%{name}/src/bakefile.py
-%attr(755,root,root) %{_datadir}/%{name}/src/bakefile_gen.py
+%{_datadir}/%{name}
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/*.py[oc]
+%attr(755,root,root) %{_libdir}/%{name}/bakefile.py
+%attr(755,root,root) %{_libdir}/%{name}/bakefile_gen.py
 %{_mandir}/man1/bakefile.1*
