@@ -49,8 +49,6 @@ install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_bindir}}
 	DESTDIR=$RPM_BUILD_ROOT \
 	install
 
-touch $RPM_BUILD_ROOT%{_aclocaldir}/autoconf_inc.m4
-
 # use system available modules
 rm -rf $RPM_BUILD_ROOT%{_libdir}/%{name}/{empy,optik}
 
