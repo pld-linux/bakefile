@@ -1,4 +1,3 @@
-%include	/usr/lib/rpm/macros.python
 Summary:	Native makefiles generator
 Summary(pl):	Generator natywnych plików typu Makefile
 Name:		bakefile
