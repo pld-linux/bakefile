@@ -8,7 +8,7 @@
 +    try:
 +      import em
 +    except ImportError:
-+     import empy import em
++     from empy import em
      rulesdir, template = __findWriter(writer)
      filename = tempfile.mktemp('bakefile')   
 -    empy.em.invoke(['-I','mk',
