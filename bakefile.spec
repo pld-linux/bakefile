@@ -3,14 +3,13 @@ Summary:	Native makefiles generator
 Summary(pl):	Generator natywnych plików typu Makefile
 Name:		bakefile
 Version:	0.1.1
-%define		snap 20031009
+%define		snap 20031028
 Release:	0.%{snap}.1
 License:	GPL v2+
 Group:		Applications/Text
 Source0:	http://bakefile.sourceforge.net/snapshot/bakefile-%{version}.%{snap}.tar.gz
-# Source0-md5:	e4c3359d61b927dc1856f6e65a1dd86b
+# Source0-md5:	a504c189647bb1fcd14a23766b70b5f2
 Patch0:		%{name}-empy.patch
-Patch1:		%{name}-typo.patch
 URL:		http://bakefile.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -36,7 +35,6 @@ dla autoconfa, projekt dla Visual C++, makefile dla bcc itd.).
 %prep
 %setup -q -n %{name}-%{version}.%{snap}
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__aclocal}
