@@ -1,7 +1,6 @@
-
 %include	/usr/lib/rpm/macros.python
-
 Summary:	Native makefiles generator
+Summary(pl):	Generator natywnych plików typu Makefile
 Name:		bakefile
 Version:	0.1.1
 %define		snap 20031009
@@ -13,6 +12,8 @@ Source0:	http://bakefile.sourceforge.net/snapshot/bakefile-%{version}.%{snap}.ta
 Patch0:		%{name}-empy.patch
 Patch1:		%{name}-typo.patch
 URL:		http://bakefile.sourceforge.net/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
 Requires:	python-libxml2
@@ -21,9 +22,16 @@ Requires:	python-optik >= 1.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Bakefile is cross-platform, cross-compiler native makefiles generator. It takes
-compiler-independent description of build tasks as input and generate native
-makefile (autoconf's Makefile.in, Visual C++ project, bcc makefile etc.).
+Bakefile is cross-platform, cross-compiler native makefiles generator.
+It takes compiler-independent description of build tasks as input and
+generate native makefile (autoconf's Makefile.in, Visual C++ project,
+bcc makefile etc.).
+
+%description -l pl
+Bakefile to generator natywnych plików typu Makefile dla wielu
+platform i kompilatorów. Przyjmuje na wej¶ciu niezale¿ny od
+kompilatora opis zadañ budowania  i tworzy natywny plik (Makefile.in
+dla autoconfa, projekt dla Visual C++, makefile dla bcc itd.).
 
 %prep
 %setup -q -n %{name}-%{version}.%{snap}
