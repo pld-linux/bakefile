@@ -55,3 +55,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/src/*.py[oc]
 %attr(755,root,root) %{_datadir}/%{name}/src/bakefile.py
 %attr(755,root,root) %{_datadir}/%{name}/src/bakefile_gen.py
+%{_mandir}/man1/bakefile.1*
