@@ -2,11 +2,12 @@ Summary:	Native makefiles generator
 Summary(pl):	Generator natywnych plików typu Makefile
 Name:		bakefile
 Version:	0.1.4
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		Applications/Text
 Source0:	http://dl.sourceforge.net/bakefile/bakefile-%{version}.tar.gz
 # Source0-md5:	af29dbba0c3f9038f8dc358e94dac9ed
+Source1:	%{name}-%{version}.m4
 Patch0:		%{name}-empy.patch
 URL:		http://bakefile.sourceforge.net/
 BuildRequires:	autoconf
@@ -47,6 +48,9 @@ install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_bindir}}
 %{__make} \
 	DESTDIR=$RPM_BUILD_ROOT \
 	install
+
+# please remove if bakefile version >= 0.1.5
+install %{SOURCE1} $RPM_BUILD_ROOT%{_aclocaldir}/bakefile.m4
 
 # use system available modules
 rm -rf $RPM_BUILD_ROOT%{_libdir}/%{name}/{empy,optik}
