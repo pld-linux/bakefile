@@ -36,7 +36,7 @@ dla autoconfa, projekt dla Visual C++, makefile dla bcc itd.).
 %patch0 -p1
 
 %build
-%{__aclocal}
+%{__aclocal} -I admin
 %{__autoconf}
 %{__automake}
 %configure
