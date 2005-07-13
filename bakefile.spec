@@ -1,12 +1,12 @@
 Summary:	Native makefiles generator
 Summary(pl):	Generator natywnych plików typu Makefile
 Name:		bakefile
-Version:	0.1.8
+Version:	0.1.9.1
 Release:	1
 License:	GPL v2+
 Group:		Applications/Text
 Source0:	http://dl.sourceforge.net/bakefile/bakefile-%{version}.tar.gz
-# Source0-md5:	df966b4892b2425172549e7a2e291fb3
+# Source0-md5:	7e68aaefa2775fb1ada711e6efcea504
 Patch0:		%{name}-empy.patch
 URL:		http://bakefile.sourceforge.net/
 BuildRequires:	autoconf
