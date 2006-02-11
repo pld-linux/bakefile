@@ -65,4 +65,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/*.so
 %attr(755,root,root) %{_libdir}/%{name}/bakefile.py
 %attr(755,root,root) %{_libdir}/%{name}/bakefile_gen.py
-%{_mandir}/man1/bakefile.1*
+%{_mandir}/man1/bakefil*.1*
