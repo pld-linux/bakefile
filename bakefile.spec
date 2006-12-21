@@ -1,14 +1,12 @@
-%define		pre	_pre1
-
 Summary:	Native makefiles generator
 Summary(pl):	Generator natywnych plików typu Makefile
 Name:		bakefile
 Version:	0.2.1
-Release:	0.%{pre}.1
+Release:	1
 License:	GPL v2+
 Group:		Applications/Text
-Source0:	http://dl.sourceforge.net/bakefile/bakefile-%{version}%{pre}.tar.gz
-# Source0-md5:	bf4b78fb2afd9f34cb2f845174fc32d0
+Source0:	http://dl.sourceforge.net/bakefile/bakefile-%{version}.tar.gz
+# Source0-md5:	bf8f8b25d203e84902efec87636da485
 Patch0:		%{name}-empy.patch
 URL:		http://bakefile.sourceforge.net/
 BuildRequires:	autoconf
@@ -33,7 +31,7 @@ kompilatora opis zadañ budowania  i tworzy natywny plik (Makefile.in
 dla autoconfa, projekt dla Visual C++, makefile dla bcc itd.).
 
 %prep
-%setup -q -n %{name}-%{version}%{pre} 
+%setup -q
 %patch0 -p1
 
 %build
