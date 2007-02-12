@@ -1,5 +1,5 @@
 Summary:	Native makefiles generator
-Summary(pl):	Generator natywnych plikÛw typu Makefile
+Summary(pl.UTF-8):   Generator natywnych plik√≥w typu Makefile
 Name:		bakefile
 Version:	0.2.1
 Release:	1
@@ -24,10 +24,10 @@ It takes compiler-independent description of build tasks as input and
 generate native makefile (autoconf's Makefile.in, Visual C++ project,
 bcc makefile etc.).
 
-%description -l pl
-Bakefile to generator natywnych plikÛw typu Makefile dla wielu
-platform i kompilatorÛw. Przyjmuje na wej∂ciu niezaleøny od
-kompilatora opis zadaÒ budowania  i tworzy natywny plik (Makefile.in
+%description -l pl.UTF-8
+Bakefile to generator natywnych plik√≥w typu Makefile dla wielu
+platform i kompilator√≥w. Przyjmuje na wej≈õciu niezale≈ºny od
+kompilatora opis zada≈Ñ budowania  i tworzy natywny plik (Makefile.in
 dla autoconfa, projekt dla Visual C++, makefile dla bcc itd.).
 
 %prep
