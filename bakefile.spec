@@ -1,5 +1,5 @@
 Summary:	Native makefiles generator
-Summary(pl.UTF-8):   Generator natywnych plików typu Makefile
+Summary(pl.UTF-8):	Generator natywnych plików typu Makefile
 Name:		bakefile
 Version:	0.2.1
 Release:	1
