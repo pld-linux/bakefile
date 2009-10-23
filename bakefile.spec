@@ -1,12 +1,12 @@
 Summary:	Native makefiles generator
 Summary(pl.UTF-8):	Generator natywnych plików typu Makefile
 Name:		bakefile
-Version:	0.2.2
+Version:	0.2.7
 Release:	0.1
 License:	MIT
 Group:		Development/Building
-Source0:	http://dl.sourceforge.net/bakefile/bakefile-%{version}.tar.gz
-# Source0-md5:	42d5591cecbf628ecc5ee4e5e2ee809c
+Source0:	http://dl.sourceforge.net/bakefile/%{name}-%{version}.tar.gz
+# Source0-md5:	4485a10db8155702c4dd946e615c82fc
 Patch0:		%{name}-empy.patch
 URL:		http://bakefile.sourceforge.net/
 BuildRequires:	autoconf
@@ -15,8 +15,8 @@ BuildRequires:	libtool
 BuildRequires:	python-devel
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
-Requires:	python-libxml2
 Requires:	empy >= 3.1
+Requires:	python-libxml2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -28,7 +28,7 @@ bcc makefile etc.).
 %description -l pl.UTF-8
 Bakefile to generator natywnych plików typu Makefile dla wielu
 platform i kompilatorów. Przyjmuje na wejściu niezależny od
-kompilatora opis zadań budowania  i tworzy natywny plik (Makefile.in
+kompilatora opis zadań budowania i tworzy natywny plik (Makefile.in
 dla autoconfa, projekt dla Visual C++, makefile dla bcc itd.).
 
 %prep
