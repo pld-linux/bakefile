@@ -1,3 +1,6 @@
+#
+# TODO: autotools break bakefile_gen (ImportError: Bad magic number in /usr/lib/bakefile/xmlparser.pyc)
+#
 Summary:	Native makefiles generator
 Summary(pl.UTF-8):	Generator natywnych plików typu Makefile
 Name:		bakefile
@@ -5,12 +8,12 @@ Version:	0.2.8
 Release:	0.1
 License:	MIT
 Group:		Development/Building
-Source0:	http://dl.sourceforge.net/bakefile/%{name}-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/bakefile/%{name}-%{version}.tar.gz
 # Source0-md5:	874da5c9035514366b7723bc7657c71c
 Patch0:		%{name}-empy.patch
 URL:		http://bakefile.sourceforge.net/
-BuildRequires:	autoconf
-BuildRequires:	automake
+#BuildRequires:	autoconf
+#BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	python-devel
 BuildRequires:	rpm-pythonprov
@@ -36,10 +39,10 @@ dla autoconfa, projekt dla Visual C++, makefile dla bcc itd.).
 %patch0 -p1
 
 %build
-%{__libtoolize}
-%{__aclocal} -I admin
-%{__autoconf}
-%{__automake}
+#%%{__libtoolize}
+#%%{__aclocal} -I admin
+#%%{__autoconf}
+#%%{__automake}
 %configure
 
 %install
