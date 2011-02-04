@@ -1,3 +1,6 @@
+#
+# TODO: unpackaged files
+#
 Summary:	Native makefiles generator
 Summary(pl.UTF-8):	Generator natywnych plików typu Makefile
 Name:		bakefile
