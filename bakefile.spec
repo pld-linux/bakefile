@@ -12,10 +12,10 @@ Source0:	http://downloads.sourceforge.net/bakefile/%{name}-%{version}.tar.gz
 # Source0-md5:	b53813d155df1a45371abc8f781e6d88
 Patch0:		%{name}-empy.patch
 URL:		http://bakefile.sourceforge.net/
-BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.53
+BuildRequires:	automake >= 1.6
 BuildRequires:	libtool
-BuildRequires:	python-devel
+BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
 Requires:	empy >= 3.1
@@ -47,27 +47,32 @@ dla autoconfa, projekt dla Visual C++, makefile dla bcc itd.).
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_examplesdir}/%{name}-%{version},%{_bindir}}
 
-%{__make} \
-	DESTDIR=$RPM_BUILD_ROOT \
-	install
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 # use system available modules
-%{__rm} -r $RPM_BUILD_ROOT%{_libdir}/%{name}/empy
+%{__rm} -r $RPM_BUILD_ROOT%{_libdir}/%{name}/{empy,py25modules}
+
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/*.la
+find $RPM_BUILD_ROOT%{_libdir}/%{name} -name '*.py' | grep -E -v '/bakefile(_gen)?\.py' | xargs %{__rm}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README THANKS doc/html
-%attr(755,root,root) %{_bindir}/*
-%{_aclocaldir}/*.m4
+%doc AUTHORS COPYING NEWS README THANKS doc/html
+%attr(755,root,root) %{_bindir}/bakefile
+%attr(755,root,root) %{_bindir}/bakefile_gen
+%attr(755,root,root) %{_bindir}/bakefilize
 %{_datadir}/%{name}
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/*.py[oc]
-%attr(755,root,root) %{_libdir}/%{name}/*.so
+%attr(755,root,root) %{_libdir}/%{name}/_bkl_c.so
 %attr(755,root,root) %{_libdir}/%{name}/bakefile.py
 %attr(755,root,root) %{_libdir}/%{name}/bakefile_gen.py
-%{_mandir}/man1/bakefil*.1*
+%{_aclocaldir}/bakefile*.m4
+%{_mandir}/man1/bakefile.1*
+%{_mandir}/man1/bakefile_gen.1*
+%{_mandir}/man1/bakefilize.1*
