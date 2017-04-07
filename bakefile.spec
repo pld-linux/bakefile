@@ -1,3 +1,4 @@
+# NOTE: for 1.x versions see DEVEL branch; it's not compatible with 0.x, and (according to web site) still work in progress.
 Summary:	Native makefiles generator
 Summary(pl.UTF-8):	Generator natywnych plików typu Makefile
 Name:		bakefile
