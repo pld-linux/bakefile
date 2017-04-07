@@ -1,23 +1,32 @@
+#
+# Conditional build:
+%bcond_without	doc	# Sphinx documentation
+%bcond_without	tests	# py.test tests
+
 Summary:	Native makefiles generator
 Summary(pl.UTF-8):	Generator natywnych plików typu Makefile
 Name:		bakefile
-Version:	0.2.10
+Version:	1.2.5.1
 Release:	1
 License:	MIT
 Group:		Development/Building
 #SourceDownload: https://github.com/vslavik/bakefile/releases
-Source0:	https://github.com/vslavik/bakefile/releases/download/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	f980cdd36268b5d2b23602d454bdf0a4
-Patch0:		%{name}-empy.patch
+Source0:	https://github.com/vslavik/bakefile/archive/v%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	cfd70a07103a838a97f0b644d28292b1
 URL:		http://bakefile.org/
-BuildRequires:	autoconf >= 2.53
-BuildRequires:	automake >= 1.6
-BuildRequires:	libtool
-BuildRequires:	python-devel >= 1:2.5
+# it's bundled; use system?
+#BuildRequires:	java-antlr3
+BuildRequires:	jre
+BuildRequires:	python-devel >= 1:2.6
+%{?with_tests:BuildRequires:	python-pytest}
 BuildRequires:	rpm-pythonprov
-%pyrequires_eq	python-modules
-Requires:	empy >= 3.1
+%{?with_doc:BuildRequires:	sphinx-pdg-2}
+# TODO
+#Requires:	python-antlr3
 Requires:	python-libxml2
+Requires:	python-modules >= 1:2.6
+# TODO (for color output)
+#Suggests:	python-clint
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,43 +43,43 @@ dla autoconfa, projekt dla Visual C++, makefile dla bcc itd.).
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-%{__libtoolize}
-%{__aclocal} -I admin
-%{__autoconf}
-%{__automake}
-%configure
+%{__make} parser
+
+%if %{with doc}
+PYTHONPATH=$(pwd)/src \
+%{__make} -C docs html \
+	SPHINXBUILD=sphinx-build-2
+%{__rm} -r docs/html/{_sources,.buildinfo,objects.inv}
+%endif
+
+%if %{with tests}
+%{__python} -m pytest
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+# make install is not supported
 
-# use system available modules
-%{__rm} -r $RPM_BUILD_ROOT%{_libdir}/%{name}/{empy,py25modules}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{py_sitescriptdir}}
+cp -p src/tool.py $RPM_BUILD_ROOT%{_bindir}/bkl
+cp -pr src/bkl $RPM_BUILD_ROOT%{py_sitescriptdir}/bkl
+# parser antlr3 source files
+%{__rm} $RPM_BUILD_ROOT%{py_sitescriptdir}/bkl/parser/*.{g,tokens}
+# TODO: use some system package for "import antlr3"
+cp -pr 3rdparty/antlr3/python-runtime/antlr3 $RPM_BUILD_ROOT%{py_sitescriptdir}/bkl/parser
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/%{name}/*.la
-find $RPM_BUILD_ROOT%{_libdir}/%{name} -name '*.py' | grep -E -v '/bakefile(_gen)?\.py' | xargs %{__rm}
+%py_comp $RPM_BUILD_ROOT%{py_sitescriptdir}
+%py_ocomp $RPM_BUILD_ROOT%{py_sitescriptdir}
+%py_postclean -x 'plugins/.*'
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS COPYING NEWS README THANKS doc/html
-%attr(755,root,root) %{_bindir}/bakefile
-%attr(755,root,root) %{_bindir}/bakefile_gen
-%attr(755,root,root) %{_bindir}/bakefilize
-%{_datadir}/%{name}
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/*.py[oc]
-%attr(755,root,root) %{_libdir}/%{name}/_bkl_c.so
-%attr(755,root,root) %{_libdir}/%{name}/bakefile.py
-%attr(755,root,root) %{_libdir}/%{name}/bakefile_gen.py
-%{_aclocaldir}/bakefile*.m4
-%{_mandir}/man1/bakefile.1*
-%{_mandir}/man1/bakefile_gen.1*
-%{_mandir}/man1/bakefilize.1*
+%doc COPYING NEWS README %{?with_doc:docs/html}
+%attr(755,root,root) %{_bindir}/bkl
+%{py_sitescriptdir}/bkl
