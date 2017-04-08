@@ -1,0 +1,14 @@
+--- bakefile-0.2.10/src/utils.py.orig	2017-01-04 11:52:30.000000000 +0100
++++ bakefile-0.2.10/src/utils.py	2017-04-08 07:45:43.920622017 +0200
+@@ -40,7 +40,10 @@
+        e.g. '0.1.4'."""
+     vcur = mk.vars['BAKEFILE_VERSION'].split('.')
+     vreq = version.split('.')
+-    return vcur >= vreq
++    try:
++        return map(int, vcur) >= map(int, vreq)
++    except:
++        return vcur >= vreq
+ 
+ def isoption(name):
+     return name in mk.options
