@@ -23,7 +23,6 @@ BuildRequires:	rpm-pythonprov
 %{?with_doc:BuildRequires:	sphinx-pdg-2}
 # TODO
 #Requires:	python-antlr3
-Requires:	python-libxml2
 Requires:	python-modules >= 1:2.6
 # TODO (for color output)
 #Suggests:	python-clint
