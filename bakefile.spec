@@ -2,15 +2,14 @@
 Summary:	Native makefiles generator
 Summary(pl.UTF-8):	Generator natywnych plików typu Makefile
 Name:		bakefile
-Version:	0.2.10
-Release:	2
+Version:	0.2.11
+Release:	1
 License:	MIT
 Group:		Development/Building
 #SourceDownload: https://github.com/vslavik/bakefile/releases
 Source0:	https://github.com/vslavik/bakefile/releases/download/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	f980cdd36268b5d2b23602d454bdf0a4
+# Source0-md5:	7239d91e9907498feffa3c77333a2e22
 Patch0:		%{name}-empy.patch
-Patch1:		%{name}-versioncompare.patch
 URL:		http://bakefile.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1.6
@@ -37,7 +36,6 @@ dla autoconfa, projekt dla Visual C++, makefile dla bcc itd.).
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -69,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/bakefilize
 %{_datadir}/%{name}
 %dir %{_libdir}/%{name}
-%{_libdir}/%{name}/*.py[oc]
+%{_libdir}/%{name}/*.py[co]
 %attr(755,root,root) %{_libdir}/%{name}/_bkl_c.so
 %attr(755,root,root) %{_libdir}/%{name}/bakefile.py
 %attr(755,root,root) %{_libdir}/%{name}/bakefile_gen.py
