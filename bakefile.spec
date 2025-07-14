@@ -35,7 +35,7 @@ dla autoconfa, projekt dla Visual C++, makefile dla bcc itd.).
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %{__sed} -E -i -e '1s,#!\s*/usr/bin/env\s+python(\s|$),#!%{__python}\1,' \
 	src/bakefile.py \
