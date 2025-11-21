@@ -18,8 +18,8 @@ BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
 Requires:	empy >= 3.1
-# does not exist anymore
-# Requires:	python-libxml2
+# does not exist anymore and is not strictly required
+Suggests:	python-libxml2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
