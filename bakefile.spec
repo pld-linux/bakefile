@@ -3,7 +3,7 @@ Summary:	Native makefiles generator
 Summary(pl.UTF-8):	Generator natywnych plików typu Makefile
 Name:		bakefile
 Version:	0.2.12
-Release:	3
+Release:	4
 License:	MIT
 Group:		Development/Building
 #SourceDownload: https://github.com/vslavik/bakefile/releases
