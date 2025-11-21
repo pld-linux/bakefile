@@ -3,7 +3,7 @@ Summary:	Native makefiles generator
 Summary(pl.UTF-8):	Generator natywnych plików typu Makefile
 Name:		bakefile
 Version:	0.2.12
-Release:	2
+Release:	3
 License:	MIT
 Group:		Development/Building
 #SourceDownload: https://github.com/vslavik/bakefile/releases
@@ -47,7 +47,8 @@ dla autoconfa, projekt dla Visual C++, makefile dla bcc itd.).
 %{__aclocal} -I admin
 %{__autoconf}
 %{__automake}
-%configure
+%configure \
+	PYTHON=%{__python}
 
 %install
 rm -rf $RPM_BUILD_ROOT
